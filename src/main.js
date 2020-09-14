@@ -6,7 +6,7 @@ import {
   Bodies,
   Body
 } from "matter-js"
-import createConnection from "./socket.js"
+import { remote } from "sinix"
 
 const width = 1000
 const height = 600
@@ -116,8 +116,6 @@ const setup = () => {
     keys[e.keyCode] = false
   })
 
-  createConnection(player)
-
   Engine.run(engine)
   Render.run(render)
 }
@@ -159,6 +157,21 @@ const collisionListeners = () => {
     }
   })
 }
+
+remote.listen("STICK1", (payload) => {
+  payload.x *= 1/60 * 0.003
+  payload.y *= 1/60 * 0.003
+
+  player.force = payload
+})
+
+remote.listen("BUTTON", (payload) => {
+  if(payload.val === "A"){
+    player.torque = -0.5
+  } else if(payload.val === "B"){
+    player.torque = 0.5
+  }
+})
 
 setup()
 collisionListeners()
