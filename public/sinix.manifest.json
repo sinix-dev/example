@@ -1,6 +1,10 @@
 {
-  "name": "svelte-app",
+  "name": "spins",
   "version": "1.0.0",
-  "title": "Sinix Example",
-  "slug": "svelte-app-v1.0.0"
+  "title": "spins",
+  "slug": "spins-v1.0.0",
+  "window": {
+    "width": 1000,
+    "height": 600
+  }
 }

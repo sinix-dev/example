@@ -1,4 +1,7 @@
 module.exports = {
-  title: "Sinix Example",
-  distDir: "public/"
+  distDir: "public/",
+  window: {
+    width: 1000,
+    height: 600
+  }
 }
