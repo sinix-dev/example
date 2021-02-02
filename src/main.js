@@ -6,7 +6,7 @@ import {
   Bodies,
   Body
 } from "matter-js"
-import { remote } from "sinix"
+import { channel } from "sinix"
 
 const width = 1000
 const height = 600
@@ -158,14 +158,14 @@ const collisionListeners = () => {
   })
 }
 
-remote.listen("STICK1", (payload) => {
+channel.listen("STICK1", (payload) => {
   payload.x *= 1/60 * 0.003
   payload.y *= 1/60 * 0.003
 
   player.force = payload
 })
 
-remote.listen("BUTTON", (payload) => {
+channel.listen("BUTTON", (payload) => {
   if(payload.val === "A"){
     player.torque = -0.5
   } else if(payload.val === "B"){
